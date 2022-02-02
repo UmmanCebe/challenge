@@ -1,15 +1,23 @@
-package com.example.challenge.entities.concretes;
+package com.example.challenge.entity;
 
 import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Data
 @Entity
 @Table(name = "devices")
-public class Device {
+@AllArgsConstructor
+@NoArgsConstructor
+public class    Device {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "device_id")
+    private int id;
+
     @NotNull
     @Column(name = "brand")
     private String brand;
@@ -26,14 +34,4 @@ public class Device {
     @Column(name = "os_version")
     private String osVersion;
 
-    public Device(){
-
-    }
-
-    public Device(String brand, String model, String os, String osVersion) {
-        this.brand = brand;
-        this.model = model;
-        this.os = os;
-        this.osVersion = osVersion;
-    }
 }
