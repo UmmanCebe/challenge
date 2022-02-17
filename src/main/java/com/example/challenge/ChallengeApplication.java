@@ -20,7 +20,8 @@ public class ChallengeApplication {
 		SpringApplication.run(ChallengeApplication.class, args);
 	}
 
-	@Bean
+
+	/*@Bean
 	CommandLineRunner commandLineRunner (DeviceService deviceService){
 		return args -> {
 			ObjectMapper mapper = new ObjectMapper();
@@ -28,6 +29,7 @@ public class ChallengeApplication {
 			List<Device> deviceList = mapper.readValue(new File("src/main/resources/devices.json"), new TypeReference<List<Device>>() {});
 
 			deviceService.saveAll(deviceList);
+
 		};
-	}
+	}*/
 }

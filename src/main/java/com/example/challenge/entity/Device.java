@@ -1,5 +1,6 @@
 package com.example.challenge.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;

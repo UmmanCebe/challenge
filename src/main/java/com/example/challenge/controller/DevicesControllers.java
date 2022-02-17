@@ -30,4 +30,9 @@ public class DevicesControllers {
     public Result add(@RequestBody Device device) {
         return this.deviceService.add(device);
     }
+
+    @GetMapping("/getByBrandAndOsVersion")
+    public DataResult<List<Device>> getByBrandAndOsVersion(@RequestParam String brand,String osVersion){
+        return this.deviceService.getByBrandAndOsVersion(brand,osVersion);
+    }
 }
