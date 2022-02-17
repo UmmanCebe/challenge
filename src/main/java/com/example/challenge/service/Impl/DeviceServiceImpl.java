@@ -7,14 +7,24 @@ import com.example.challenge.entity.Device;
 import com.example.challenge.utils.results.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.apache.commons.lang.StringUtils;
 
+
+import javax.annotation.PostConstruct;
+import javax.persistence.PostPersist;
 import java.util.List;
+import java.util.Locale;
 
 
 @Service
 public class DeviceServiceImpl implements DeviceService {
 
     private DeviceRepository deviceDao;
+
+   /* @PostConstruct
+    public void init(){
+        System.out.println("umman");
+    }*/
 
     @Autowired
     public DeviceServiceImpl(DeviceRepository deviceDao){
@@ -30,6 +40,10 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Override
     public Result add(Device device) {
+        if(!(device.getOs().toLowerCase().equals("android") || device.getOs().toLowerCase().equals("ios")))
+            return new ErrorResult("os kısmı yalnızca android veya ios olabilir.");
+        if(StringUtils.isBlank(device.getOs()) || StringUtils.isBlank(device.getModel()) || StringUtils.isBlank(device.getBrand()) || StringUtils.isBlank(device.getOsVersion()))
+            return new ErrorResult("Brand,model,os,osVersion kısımları boş bırakılamaz.");
         Boolean checkDevices = deviceDao.existsByBrandAndModelAndOsVersion(device.getBrand(), device.getModel(), device.getOsVersion());
         if (checkDevices)
             return new ErrorResult("Var olan cihaz eklenemez");

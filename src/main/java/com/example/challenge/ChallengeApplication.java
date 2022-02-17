@@ -1,17 +1,9 @@
 package com.example.challenge;
 
-import com.example.challenge.entity.Device;
-import com.example.challenge.service.DeviceService;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 @SpringBootApplication
 public class ChallengeApplication {
